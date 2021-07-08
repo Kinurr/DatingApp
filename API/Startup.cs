@@ -33,6 +33,7 @@ namespace API
             });
 
             services.AddControllers();
+            services.AddCors();
 
             services.AddSwaggerGen(c =>
             {
@@ -53,6 +54,8 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 
             app.UseAuthorization();
 
